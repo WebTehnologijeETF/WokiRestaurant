@@ -4,7 +4,7 @@
 body
 {
  background-image: url("rest3.jpg");
- background-size: cover;
+ background-size: auto;
  background-repeat: no-repeat;
  margin:0;
 }
@@ -21,20 +21,15 @@ h1 {
 	margin-top:37px;	
 	clear:both;
 }
-/*
-#zaglavlje img
+h1 img
 {
-  padding:0;
+  height:57px;
+  width:35px;
 }
-ul {
-    width: 1000px;
-    padding:0;
-	margin:0;
-}
-*/
-#prvi
+
+#okvir
 {
- width: auto;
+ width: 1349px;
  margin: 0 auto;
  padding: 0;
 }
@@ -79,22 +74,13 @@ ul {
   display:inline;
 }
 
-#okvir
+#potpis
 {
-  border-style:solid;
-  border-width:1px;
-  margin:0;
-  padding:0;
-  margin-top:500px;
-  clear:both;
-}
-
-#glavni p
-{
- margin-top:10px;
- padding:90px;
+ margin-top:40px;
+ padding-left:90px;
  font-family:monospace;
  font-size:20px;
+ height:130px;
 }
 /*Ponuda*/
 
@@ -169,8 +155,24 @@ table td
 #glavni
 { 
  margin:0;
- padding:20px;
  color:white;
+}
+
+#glavni p
+{
+ margin-top:90px;
+ padding-left:90px;
+ font-family:monospace;
+ font-size:20px;
+}
+#glavniGal p
+{
+ color:white;
+ margin-top:90px;
+ padding-left:90px;
+ font-family:monospace;
+ font-size:20px;
+ height:250px;
 }
 
 #parLok
@@ -179,7 +181,7 @@ table td
   font-size:20px;
   font-family:monospace;
   text-align:center;
-  margin-top:10px;
+  margin-top:50px;
   padding:60px;
  }
  
@@ -229,13 +231,21 @@ table.kontaktForma td
 {
  color:white;
  margin:0;
- padding:0;
+ padding-top:20px;
+ padding-left:20px;
+ clear:both;
 }
 
 .lijevo{
 	float: left;
 	padding:0 50px;
 	margin-top:5px;
+}
+.lijevo img
+{
+   height:150px;
+   width:230px;
+   padding-left:35px;
 }
 
 #vijest{
@@ -256,8 +266,9 @@ table.kontaktForma td
 	height: 32px;
 	background-color: #712702;
 	margin-top: 0px;
+	text-align:center;
 }
-.datAutor{
+.datum{
 	font-style: italic;
 	font-size: 15px;
 	height: 34px;
@@ -265,9 +276,16 @@ table.kontaktForma td
 	color: white;
 	margin-top: -22px;
 }
+.autor{
+	font-style: italic;
+	font-size: 15px;
+	height: 25px;
+	background-color: #975252;
+	color: white;
+	margin-top: -32px;
+}
 .opis{
 	color: white;
-	margin-top: -12px;
 	padding-left: 5px;
 }
 .opsirnije{
@@ -300,6 +318,7 @@ h3
  font-family:monospace;
  font-size:20px;
  margin-left:110px;
+ margin-top:60px;
 }
 
 #opcija
