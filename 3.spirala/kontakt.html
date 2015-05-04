@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title> Restoran Woki</title>
+<link rel="stylesheet" type="text/css" href="stil.css">
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+	<div id="okvir">
+		<div id="glavni">
+			<p>Za sve dodatne informacije, sugestije i kritike budite slobodni da nas kontaktirate putem sljedeće forme:</p>
+			<!-- HTML5 elementi su email, url i tel. Email i url su podrzani na svim pretrazivacima, izuzev Safarija, dok je range podrzan na svim.
+				Takodjer, iz HTML5 koristen je i footer.-->
+			<!--zbog html5 action mora biti !=""-->
+			<form action="proba.php" id="forma" name="kontaktForma" method="post" onsubmit="return ValidacijaForme(this);">
+			<table class="kontaktForma">
+				<tr>
+					<td>Ime:</td>
+					<td>
+						<input type="text" size="25" id="ime" autofocus>
+						<img src="Error.png" alt="" id="errorSlika">
+						<span id="imeError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Prezime:</td>
+					<td>
+						<input type="text" size="25" id="prezime">
+						<img src="Error.png" alt="" id="errorSlika1">
+						<span id="prezimeError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Mjesto:</td>
+					<td>
+						<input type="text" size="25" id="mjesto" onchange="provjeraMjestoOpcina()">
+						<img src="Error.png" alt="" id="errorSlika5">
+						<span id="mjestoError" class="red"></span>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>Općina:</td>
+					<td>
+						<input type="text" size="25" id="opcina" onchange="provjeraMjestoOpcina()">
+						<img src="Error.png" alt="" id="errorSlika4">
+						<span id="opcinaError" class="red"></span>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>E-mail:</td>
+					<td>
+						<input type="email" size="25" id="email">
+						<img src="Error.png" alt="" id="errorSlika2">
+						<span id="mailError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Kontakt tel:</td>
+					<td>
+						<input type="tel" name="usrtel" size="25" id="tel" >
+						<img src="Error.png" alt="" id="errorSlika3">
+						<span id="telError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Razlog kontaktiranja:</td>
+					<td>
+						<select id="opcija" onchange="crossProvjera()" >
+							<option value="1">Sugestija</option>
+							<option value="2">Kritika</option>
+							<option value="3">Ostalo</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Ocijenite našu uslugu(1-5):</td>
+					<td><input type="range" name="points" min="1" max="5" id="range"></td>
+				</tr>
+				<tr>
+					
+					<td>Tekst:</td>
+					<td><textarea name='comment' id='tekst' cols="40" rows="10"></textarea><br></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td>
+						<button type="reset" id="ponisti">Poništi</button>
+						<button type="submit" id="posalji">Pošalji </button>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>	
+		<footer>
+			<p id="podnozje">&copy; 2015 Restoran Woki. Sva prava podržana.</p>
+		</footer>
+	</div>
+	<script src="skripta.js"></script>
+</body>
+</html>

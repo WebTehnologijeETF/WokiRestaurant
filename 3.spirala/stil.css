@@ -368,3 +368,13 @@ h3
  color:green;
  font-size:25px;
 }
+
+table.formaUnos
+{
+ margin-left:20px;
+ margin-top:50px; 
+}
+table.formaUnos td
+{
+ text-align:left;
+}
