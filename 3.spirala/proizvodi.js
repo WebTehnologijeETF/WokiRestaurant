@@ -304,15 +304,16 @@ function preuzmi(response)
 	try
 	{
 		var niz= JSON.parse(response);
-		var out="";																												
+		var izlaz="";																												
 		for(var i=0; i < niz.length; i++)
 		{
 			slika=niz[i].slika;
-			out=out+ "<tr><td>";
-			out= out + niz[i].opis+"</td><td><img src=" + slika + " alt='' height='150px' weight='230px'>";
-			out= out + "</td></tr>";
+			opis=niz[i].opis;
+			izlaz=izlaz+ "<tr><td>";
+			izlaz= izlaz + opis +"</td><td><img src=" + slika + " alt='' height='150px' weight='230px'>";
+			izlaz= izlaz + "</td></tr>";
 		}
-		document.getElementById("pregled").innerHTML = out;
+		document.getElementById("pregled").innerHTML = izlaz;
 	}
 	catch(e)
 	{}		
