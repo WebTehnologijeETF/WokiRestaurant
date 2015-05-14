@@ -9,7 +9,7 @@ $emailCheck=false;
 $usrtelCheck=true;
 $txtCheck=false;
 
-if (isset($_REQUEST['submit']))
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	if(isset($_POST["mjesto"]))
 		$mjesto = test_input($_POST["mjesto"]);

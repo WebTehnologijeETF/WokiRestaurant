@@ -30,29 +30,12 @@ include('header.html');
 			<tr><td><?php print "Tekst: "?></td><td><?php print $tekst ?></td></tr>
 		</table>
 		<h4>Da li ste sigurni da želite poslati ove podatke?</h4>
-		<form class="forma" action="" method="post" ><!--onsubmit="Validacija_forme(); return false;"--> <input type="submit" name="buttonSlanje" id="slanjeMaila" value="Siguran sam" />
-		</form>
+		<form class="forma" action="slanjeMaila.php" method="post" ><!--onsubmit="Validacija_forme(); return false;"--> <input type="submit" name="buttonSlanje" id="slanjeMaila" value="Siguran sam" />
 		<?php
-		//$_SESSION['replyTo'] = $email;
-		//$_SESSION['replyTo'] = $email;
-			if (isset($_POST['buttonSlanje']))
-			{
-			 //mail($primaoc,$tema,$poruka,$dodatneopcije);		
-					ini_set('SMTP','webmail.etf.unsa.ba');
-					ini_set('smtp_port',25);
-					ini_set('sendmail_from', 'nagovic1@etf.unsa.ba');
-					
-					$To="nagovic1@etf.unsa.ba";
-					$Subject="Kontak forma-Woki";
-					$body="Caooo";
-					$msg=wordwrap($body,70);
-					$headers = "From: agranulo1@etf.unsa.ba\r\n";
-					$headers .= "Reply-To: nagovic1@etf.unsa.ba\r\n";
-					$headers .= "CC: sbotulja1@etf.unsa.ba\r\n";
-					mail( $To, $Subject, $msg, $headers);
-			}
+		$_SESSION['poruka'] = $tekst;
+		$_SESSION['email']= $email;
 		?>
-		
+		</form>
 		</div>
 		<h4>Ako ste pogrešno popunili formu, možete ispod prepraviti unesene podatke:</h4>
 			<form action="kontakt.php" id="forma" name="kontaktForma" method="post" novalidate> <!--onsubmit="return ValidacijaForme(this);"--> 
