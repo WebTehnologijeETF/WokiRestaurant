@@ -23,7 +23,7 @@ include('header.html');
 					$headers = "From: ".$email."\r\n";
 					$headers .= "Reply-To: ".$email."\r\n";
 					$headers .= "CC: vljubovic@etf.unsa.ba\r\n";
-					//$headers .= "Content-Type: text/plain; charset= utf-8\r\n";
+					$headers .= "Content-Type: text/plain; charset= utf-8\r\n";
 					mail( $To, $Subject, $poruka, $headers);
 			}
 				/*session_start();
