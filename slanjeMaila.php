@@ -19,7 +19,7 @@ include('header.html');
 					$Subject="Kontak forma-Woki";
 					$headers = "From: ".$email."\r\n";
 					$headers .= "Reply-To: ".$email."\r\n";
-					$headers .= "CC: nagovic1@etf.unsa.ba\r\n";
+					$headers .= "CC: vljubovic@etf.unsa.ba\r\n";
 					mail( $To, $Subject, $poruka, $headers);
 			}
 				/*session_start();
