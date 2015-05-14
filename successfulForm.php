@@ -34,6 +34,8 @@ include('header.html');
 		<?php
 		$_SESSION['poruka'] = $tekst;
 		$_SESSION['email']= $email;
+		$_SESSION['nazivIme']= $ime;
+		$_SESSION['nazivPrezime']= $prezime;
 		?>
 		</form>
 		</div>

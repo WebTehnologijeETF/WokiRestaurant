@@ -9,7 +9,10 @@ include('header.html');
 			if (isset($_POST['buttonSlanje']))
 			{
 					session_start();
-					$poruka = $_SESSION['poruka'];
+					$ime = $_SESSION['nazivIme'];
+					$prezime = $_SESSION['nazivPrezime'];
+					$poruka="Poruku poslao: ".$ime." ".$prezime."\nTekst poruke: ";
+					$poruka .= $_SESSION['poruka'];
 					$email = $_SESSION['email'];
 					ini_set('SMTP','webmail.etf.unsa.ba');
 					ini_set('smtp_port',25);
@@ -20,7 +23,7 @@ include('header.html');
 					$headers = "From: ".$email."\r\n";
 					$headers .= "Reply-To: ".$email."\r\n";
 					$headers .= "CC: vljubovic@etf.unsa.ba\r\n";
-					$headers .= "Content-Type: text/plain; charset= utf-8\r\n";
+					//$headers .= "Content-Type: text/plain; charset= utf-8\r\n";
 					mail( $To, $Subject, $poruka, $headers);
 			}
 				/*session_start();
