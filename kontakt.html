@@ -1,0 +1,90 @@
+	<div id="okvir">
+		<div id="glavni">
+			<p>Za sve dodatne informacije, sugestije i kritike budite slobodni da nas kontaktirate putem sljedeće forme:</p>
+			<form action="kontakt.php" id="forma" name="kontaktForma" method="post"> <!--onsubmit="return ValidacijaForme(this);"--> 
+			<table class="kontaktForma">
+				<tr>
+					<td>Ime:</td>
+					<td>
+						<input type="text" size="25" id="ime" name="ime" autofocus>
+						<img src="slike/Error.png" alt="" id="errorSlika">
+						<span id="imeError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Prezime:</td>
+					<td>
+						<input type="text" size="25" id="prezime" name="prezime">
+						<img src="slike/Error.png" alt="" id="errorSlika1">
+						<span id="prezimeError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Mjesto:</td>
+					<td>
+						<input type="text" size="25" id="mjesto" onchange="provjeraMjestoOpcina()" name="mjesto">
+						<img src="slike/Error.png" alt="" id="errorSlika5">
+						<span id="mjestoError" class="red"></span>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>Općina:</td>
+					<td>
+						<input type="text" size="25" id="opcina" onchange="provjeraMjestoOpcina()" name="opcina">
+						<img src="slike/Error.png" alt="" id="errorSlika4">
+						<span id="opcinaError" class="red"></span>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>E-mail:</td>
+					<td>
+						<input type="email" size="25" id="email" name="email">
+						<img src="slike/Error.png" alt="" id="errorSlika2">
+						<span id="mailError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Kontakt tel:</td>
+					<td>
+						<input type="tel" name="usrtel" size="25" id="tel">
+						<img src="slike/Error.png" alt="" id="errorSlika3">
+						<span id="telError" class="red"></span>
+					</td>
+				</tr>
+				<tr>
+				<tr>
+					<td>Razlog kontaktiranja:</td>
+					<td>
+						<select id="opcija" name="opcija" onchange="crossProvjera()">
+							<option value="Sugestija">Sugestija</option>
+							<option value="Kritika">Kritika</option>
+							<option value="Ostalo">Ostalo</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Ocijenite našu uslugu(1-5):</td>
+					<td><input type="range" name="points" min="1" max="5" id="range"></td>
+				</tr>
+				<tr>
+					<td>Tekst:</td>
+					<td>
+						<textarea id='tekst' cols="40" rows="10" name="text"></textarea><br>
+						<img src="slike/Error.png" alt="" id="errorSlika10">
+						<span id="txtError" class="red"></span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td>
+						<button type="reset" id="ponisti">Poništi</button>
+						<button type="submit" name="submit" id="posalji">Pošalji </button>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>	
+	</div>

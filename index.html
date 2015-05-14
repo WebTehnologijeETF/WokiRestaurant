@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/stil.css">
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title> Restoran Woki</title>
+</head>
+<body onload="ucitaj('pocetna.html');">
+<div id="okvir">
+			<div id="zaglavlje"> 
+				<h1><img src="slike/hat3.png" alt ="">WOKI</h1>	
+			</div>
+			<div id="meni">
+					<ul>
+						<li><a href="#" id="pocetna" onClick="ucitaj('pocetna.html');">Početna</a></li>
+						<li><a href="#" id="onama" onClick="ucitaj('onama.html');">O nama</a></li>
+						<li onclick="prikazi(this)">
+							<a href="#" id="ponuda">Ponuda</a>
+							<ul>
+								<li>Pića</li>
+								<li>Jela</li>
+							</ul>
+						</li>
+						<li><a href="#" id="lokacija" onClick="ucitaj('lokacija.html');">Lokacija</a></li>
+						<li><a href="#" id="galerija" onClick="ucitaj('galerija.html');">Galerija</a></li>
+						<li><a href="#" id="kontakt" onClick="ucitaj('kontakt.html');">Kontakt</a></li>
+					</ul>
+				</div>
+	<div id="tijelo"> </div>
+	<footer>
+		<p id="podnozje">&copy; 2015 Restoran Woki. Sva prava podržana.</p>
+	</footer>
+</div>
+<script src="js/ucitavanjeAjax.js"></script>
+<!--<script src="js/validacija.js"></script>
+-->
+<script src="js/proizvodi.js"></script>
+</body>
+</html>
