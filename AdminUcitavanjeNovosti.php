@@ -18,6 +18,16 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
     print "SQL greška: " . $greska[2];
     exit();
  }  
+ if(isset($_REQUEST['tekstHidd']))
+	{	
+            include('header.html');
+			print '<div id="tijelo">';
+		$brisi=test_input($_REQUEST['tekstHidd']);
+			$obrisi= $veza->query("DELETE FROM vijest where id=".$brisi);
+			include 'index.html';		   
+			print '</div>';
+			include('footer.html');	
+	}
 	if (isset ($_REQUEST['tekstKom']) &&  isset ($_REQUEST['autorKom']) && isset ($_REQUEST['tekstHidd']))
         {
 			include('header.html');
@@ -149,6 +159,8 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
     }
 	else
 	{
+		
+		print "<a href='dodajVijest.php'>Dodaj vijest</a>";
 		foreach ($rezultat as $vijest)
 		{
           $proba=0;
@@ -157,7 +169,6 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 			if($slika!="") $vijesti ='<div class="vijesti">';
 		    
 			else $vijesti ='<div class="vijestiBezSlike">';
-			
 			print $vijesti.'<p class="naziv">'.$vijest['naziv'].'</p>
 				<p class = "datum">Datum objave: '.date("d.m.Y. h:i", $vijest['vrijeme2']).'</p>
 				<p class="autor"> Autor: '.$vijest['autor'].'</p>';
@@ -170,6 +181,10 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 				$link= "<a href='ucitavanjeNovosti.php?vijest=$vijest'> Opširnije...</a>";
 				if($opsirnije!="")
 					print '<p class = "opsirnije">'.$link.'</p>';
+				//print "<input type='button' name='buttonObrisi' value='Obriši vijest' onclick='AdminUcitavanjeNovosti.php?brisi='".$vijest."'/>";
+			    print "<input type='hidden' name='tekstHidd' value='".$vijest."'/></td>";
+  			    print "<a href='AdminUcitavanjeNovosti.php'>Obriši vijest</a>";
+			    print "<a href='#'>Izmijeni vijest</a>";
 				print '</div>';
      }
 }

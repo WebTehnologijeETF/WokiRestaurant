@@ -42,6 +42,7 @@ h1 img
  width: 1349px;
  margin: 0 auto;
  padding: 0;
+ clear:both;
 }
 #zaglavlje
 {
@@ -431,4 +432,80 @@ h4
 	width: 300px;
 	margin-left: -10px;
 	margin-top: 10px;
+}
+.vijestiBezSlike
+{
+	border:2px solid white;
+	height: 200px;
+	width: 300px;
+	margin-left: -10px;
+	margin-top: 10px;
+	clear:both;
+}
+
+.vijestiPHP
+{
+	border:2px solid white;
+	height: 280px;
+	width: 700px;
+	margin-left: 350px;
+	margin-top: 100px;
+	clear:both;
+}
+
+.vijestiPHPSlika
+{
+	border:2px solid white;
+	height: 460px;
+	width: 700px;
+	margin-left: 350px;
+	margin-top: 100px;
+	clear:both;
+	
+}
+
+.vijestiPHPSlika img
+{
+ height:170px;
+ width:250px;
+ margin-left: 240px;
+ 
+}
+
+.opsirnijeTekst{
+	color: white;
+	padding:8px;
+}
+
+.komentar
+{
+ color: white;
+ padding:8px;
+ font-weight:bold;
+}
+.komentar a
+{
+ color: white;
+ text-decoration: none;
+}
+.komentari a
+{
+ color: white;
+}
+.komentari
+{
+	margin-top:70px;
+	color: white;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	clear:both;
+	border:1px solid white;
+    border-radius: 25px;
+	height:450px;
+}
+
+.admin
+{
+ margin-top:70px;
+ margin-left:450px;
 }
