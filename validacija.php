@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	else
 		  {
 			$ime = test_input($_POST["ime"]);
-			if (!preg_match("/^[a-zA-Z ]+$/",$ime))
+			if (strlen($ime)>10 || strlen($ime)<3) 
 				{
-					$imeErr = "Ime nije validno!";
+					$imeErr = "Predugo/prekratko ime!";
 					$imeCheck=false;
 					
 				}
@@ -43,16 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			$prezimeErr = "Morate unijeti prezime!";
 			$prezimeCheck=false;
 		  }
-	else
-		  {
-			$prezime = test_input($_POST["prezime"]);
-			if (!preg_match("/^[a-zA-Z ]+$/",$prezime))
-				{
-					$prezimeErr = "Prezime nije validno!";
-					$prezimeCheck=false;
-				}
-			else $prezimeCheck=true;
-		  }		
+	else $prezimeCheck=true;
 	if (!empty($_POST["email"]))
 	{
 		$email = test_input($_POST["email"]);
@@ -93,8 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			else $txtCheck=true;
 		  }
 	 
-	
-	
 }
 	if($imeCheck==true && $prezimeCheck==true && $emailCheck==true && $usrtelCheck==true && $txtCheck==true)
 	{

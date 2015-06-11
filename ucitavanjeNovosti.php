@@ -10,14 +10,8 @@ function test_input($data)
 	   return $data;
 	}
 $veza = new PDO("mysql:dbname=novosti;host=localhost;charset=utf8", "wtuser", "wtpass");
+$link = mysqli_connect("localhost", "wtuser", "wtpass","novosti");
 $veza->exec("set names utf8");
-$rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, autor, slika, opis, opsirnije from vijest order by datum desc");
- if (!$rezultat) 
- {
-    $greska = $veza->errorInfo();
-    print "SQL greška: " . $greska[2];
-    exit();
- }  
 	if (isset ($_REQUEST['tekstKom']) &&  isset ($_REQUEST['autorKom']) && isset ($_REQUEST['tekstHidd']))
         {
 			include('header.html');
@@ -28,7 +22,13 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 			$email="";
 			if(isset($_REQUEST['email']))
 				$email=test_input($_REQUEST['email']);
-							$noviKomentar= $veza->query("INSERT INTO komentar SET id='', vijest='".$vijestID."', datum=NOW(),autor='".$autor."',email='".$email."', tekst='".$komentar."'");
+			$vijestID = mysqli_real_escape_string($link, $vijestID);
+			$autor = mysqli_real_escape_string($link, $autor);
+			$email= mysqli_real_escape_string($link, $email);
+			$komentar = mysqli_real_escape_string($link, $komentar);
+						//$noviKomentar= $veza->query("INSERT INTO komentar SET id='', vijest='".$vijestID."', datum=NOW(),autor='".$autor."',email='".$email."', tekst='".$komentar."'");
+			//$noviKomentar= $veza->query("INSERT INTO komentar (id, vijest, datum, autor, email, tekst) values ('',".$vijestID.", NOW(),".$autor.",".$email.",".$komentar.")");
+			$noviKomentar= $veza->query("INSERT INTO komentar (id, vijest, datum, autor, email, tekst) values ('','$vijestID', CURRENT_TIMESTAMP,'$autor', '$email', '$komentar')");
 			include 'index.html';		   
 			print '</div>';
 			include('footer.html');		   
@@ -42,13 +42,15 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
         $autor="";    
 		$vijest=test_input($_GET['komentari']);
 
-		$komentari= $veza->query("select id, UNIX_TIMESTAMP(datum) vrijeme2, autor, email, tekst from komentar where vijest=".$vijest);
+		$komentari= $veza->prepare("select id, UNIX_TIMESTAMP(datum) vrijeme2, autor, email, tekst from komentar where vijest=?");
+		$komentari->execute(array($vijest));
 		$i=0;
-		$selVijest= $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, autor, slika, opis, opsirnije from vijest where id=".$vijest);
+		$selVijest= $veza->prepare("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, autor, slika, opis, opsirnije from vijest where id=?");
+		$selVijest->execute(array($vijest));
 		$vijest=$selVijest->fetch();
         $id=$vijest['id'];
 		$naziv = $vijest['naziv'];
-        $datum= date("d.m.Y. h:i", $vijest['vrijeme2']);
+        $datum= date("d.m.Y. H:i", $vijest['vrijeme2']);
 		$autor=$vijest['autor'];
 		$slika=$vijest['slika'];
 		$opis=$vijest['opis'];
@@ -75,7 +77,7 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 		{
 			$i++;
 			print '<h4>Komentar #'.$i.'</h4><br>';
-			print '<p class = "datum">Datum objave: '.date("d.m.Y. h:i", $vijest['vrijeme2']).'</p>';
+			print '<p class = "datum">Datum objave: '.date("d.m.Y. H:i", $komentar['vrijeme2']).'</p>';
 				
 			if($komentar['autor']!="" && $komentar['email']!="")
 			{	$email=$komentar['email'];
@@ -110,11 +112,12 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
         $pok=test_input($_GET['vijest']);
         session_start();
 		$_SESSION['vijest'] = $pok;
-		$selVijest= $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, autor, slika, opis, opsirnije from vijest where id=".$pok);
+		$selVijest= $veza->prepare("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, autor, slika, opis, opsirnije from vijest where id=?");
+		$selVijest->execute(array($pok));
 		$vijest=$selVijest->fetch();
         $id=$vijest['id'];
 		$naziv = $vijest['naziv'];
-        $datum= date("d.m.Y. h:i", $vijest['vrijeme2']);
+        $datum= date("d.m.Y. H:i", $vijest['vrijeme2']);
 		$autor=$vijest['autor'];
 		$slika=$vijest['slika'];
 		$opis=$vijest['opis'];
@@ -137,42 +140,47 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 		print '<p class="opsirnijeTekst">'.$opsirnije.'</p>';
 		
 		
-		$imaKomentar= $veza->query("select count(*) from komentar where vijest=".$id);
+		$imaKomentar= $veza->prepare("select count(*) from komentar where vijest=?");
+		$imaKomentar->execute(array($id));
         $proba=$imaKomentar->fetchColumn();
         
 		//$vijest=$vijest['id'];
         
-		if($proba!=0) print "<p class='komentar'><a href='ucitavanjeNovosti.php?komentari=$pok'>".$proba." komentara (prikaži)</a></p></div>";
-        else print "<p class='komentar'>Nema komentara</p></div>";
+		if($proba!=0) {print "<p class='komentar'><a href='#' onclick='ucitajKomentare(".$pok.")'>".$proba." komentara (sakrij/prikaži)</a></p>";
+		print '
+			<h4>Ostavi komentar:<h4>'
+			  ."<form action='ucitavanjeNovosti.php' method='post' >
+              <table class='komTabela'>
+				  <tr><td>Autor: </td><td><input type='text' size='25' name='autorKom' required></td></tr>
+				  <tr><td>Email: </td><td><input type='email' size='25' id='email' name='email'></td></tr>
+				  <tr><td>Tekst komentara: </td><td><textarea size='25' name='tekstKom' required></textarea></td></tr>
+				  <tr><td><input type='hidden' name='tekstHidd' value='".$id."'/></td>
+				  <td><input type='submit' name='buttonOstaviKom' value='Ostavi komentar'/></td></tr>
+			  </table>
+				"."</form>".'</div>';
+		}
+        else 
+		{
+			print '<p class="komentar">Nema komentara</p>
+			<div class="komentari">
+			<h4>Ostavi komentar:<h4>'
+			  ."<form action='ucitavanjeNovosti.php' method='post' >
+              <table class='komTabela'>
+				  <tr><td>Autor: </td><td><input type='text' size='25' name='autorKom' required></td></tr>
+				  <tr><td>Email: </td><td><input type='email' size='25' id='email' name='email'></td></tr>
+				  <tr><td>Tekst komentara: </td><td><textarea size='25' name='tekstKom' required></textarea></td></tr>
+				  <tr><td><input type='hidden' name='tekstHidd' value='".$id."'/></td>
+				  <td><input type='submit' name='buttonOstaviKom' value='Ostavi komentar'/></td></tr>
+			  </table>
+				"."</form>".
+			
+			'</div></div>';
+
+		}
+		print "<br><br><div id='sadrzaj".$pok."'></div>";
 		print '</div>';
 		//include('footer.html');
     }
-	else
-	{
-		foreach ($rezultat as $vijest)
-		{
-          $proba=0;
-            $slika=$vijest['slika'];
-		    
-			if($slika!="") $vijesti ='<div class="vijesti">';
-		    
-			else $vijesti ='<div class="vijestiBezSlike">';
-			
-			print $vijesti.'<p class="naziv">'.$vijest['naziv'].'</p>
-				<p class = "datum">Datum objave: '.date("d.m.Y. h:i", $vijest['vrijeme2']).'</p>
-				<p class="autor"> Autor: '.$vijest['autor'].'</p>';
-				if($slika!="")
-					print '<img src="'.$slika.'" alt="">';
-				
-				print '<p class = "opis">'.$vijest['opis'].'</p>';
-				$opsirnije=$vijest['opsirnije'];
-				$vijest=$vijest['id'];
-				$link= "<a href='ucitavanjeNovosti.php?vijest=$vijest'> Opširnije...</a>";
-				if($opsirnije!="")
-					print '<p class = "opsirnije">'.$link.'</p>';
-				print '</div>';
-     }
-}
 print '</div>';
 
 ?>

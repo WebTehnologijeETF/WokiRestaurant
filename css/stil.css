@@ -503,9 +503,30 @@ h4
     border-radius: 25px;
 	height:450px;
 }
-
+.komentariNovi
+{
+	margin-top:350px;
+	color: white;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	clear:both;
+	border:1px solid white;
+    border-radius: 25px;
+	height:400px;
+	width:700px;
+	margin-left:350px;
+}
 .admin
 {
  margin-top:70px;
  margin-left:450px;
+}
+
+.nemaKomentara
+{
+	margin-top:15px;
+	color: white;
+	clear:both;
+	border:1px solid white;
+	height:350px;
 }
