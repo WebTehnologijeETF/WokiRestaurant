@@ -81,14 +81,14 @@ function ucitajKomentare(id)
     var linkStranice="";   
     if(provjera=="")
 	{
-		linkStranice= "php/komentariServis.php?"+"vijest="+id;
+		linkStranice= "phpSkripte/komentariServis.php?"+"vijest="+id;
 		provjera=id;
 		ajax.open("GET", linkStranice, true);
 		ajax.send();
 	}
 	else 
 	{
-		linkStranice= "php/komentariServis.php";
+		linkStranice= "phpSkripte/komentariServis.php";
 		provjera="";
 		ajax.open("GET", linkStranice, true);
 		ajax.send();
