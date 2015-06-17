@@ -1,9 +1,19 @@
 <?php 
 include 'validacija.php';
 include('header.html');
+session_start();
 ?>
 		<div id="tijelo">	
 		<div id="glavni">
+		<?php 
+		if (isset($_SESSION['username']))
+	 {
+		 print 
+			"
+				<div><a href='odjava.php'> Odjavi se</a></div>";
+				
+	 }
+		?>
 			<p>Za sve dodatne informacije, sugestije i kritike budite slobodni da nas kontaktirate putem sljedeće forme:</p>
 			<form action="kontakt.php" id="forma" name="kontaktForma" method="post" novalidate> <!--onsubmit="return ValidacijaForme(this);"--> 
 			<table class="kontaktForma">
@@ -25,21 +35,6 @@ include('header.html');
 						</span>
 					</td>
 				</tr>
-				<tr>
-					<td>Mjesto:</td>
-					<td>
-						<input type="text" size="25" id="mjesto" name="mjesto" value="<?php if (isset($_REQUEST['mjesto'])) print htmlspecialchars($_REQUEST['mjesto']); ?>"><br>
-						<span id="mjestoError" class="red"></span>
-					</td>
-					
-				</tr>
-				<tr>
-					<td>Općina:</td>
-					<td>
-						<input type="text" size="25" id="opcina" name="opcina" value="<?php if (isset($_REQUEST['opcina'])) print htmlspecialchars($_REQUEST['opcina']); ?>"><br>
-						<span id="opcinaError" class="red"></span>
-					</td>
-					
 				</tr>
 				<tr>
 					<td>E-mail:</td>
@@ -73,7 +68,7 @@ include('header.html');
 				</tr>
 				<tr>
 					<td>Ocijenite našu uslugu(1-5):</td>
-					<td><input type="range" name="points" min="1" max="5" id="range" value="<?php if($_REQUEST['opcija']=='Ostalo'){ echo "disabled='true'";}if (isset($_REQUEST['points'])) print htmlspecialchars($_REQUEST['points']); ?>"></td>
+					<td><input type="range" name="points" min="1" max="5" id="range" value="<?php if (isset($_REQUEST['points'])) print htmlspecialchars($_REQUEST['points']); ?>"></td>
 				</tr>
 				<tr>
 					<td>Tekst:</td>

@@ -6,6 +6,11 @@ include('header.html');
 		<h4>Provjerite da li ste ispravno popunili kontakt formu:</h4>
 		<?php
 		session_start();
+		if (isset($_SESSION['username']))
+	 {
+		 print "<div><a href='odjava.php'> Odjavi se</a></div>";
+				
+	 }
 		$ime = $_SESSION['ime'];
 		$prezime = $_SESSION['prezime'];
 		$mjesto =$_SESSION['mjesto'];

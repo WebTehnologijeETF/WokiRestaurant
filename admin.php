@@ -57,10 +57,8 @@ session_start();
               <table class='admin'>
              <tr><td>Korisničko ime: </td><td><input type='text' size='25' name='username'></td></tr>
              <tr><td>Šifra:</td><td><input type='password' size='25' name='password'></td></tr>
-			 
-			 <tr><td></td><td><a href='potvrdiAdmin.php'>Zaboravili ste šifru?(Posalji novu sifru na mail)</a></td></tr>
              <tr><td></td><td><input type='submit' name='buttonOstaviKom' value='Prijava'/></td></tr>
-			 </table></form>";
+			 </table></form><br><br><br>";
 			 //print '</div>';
 			//include('footer.html');
 			 

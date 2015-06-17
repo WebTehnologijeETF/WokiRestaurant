@@ -35,13 +35,7 @@
 						<a href="#">Opširnije...</a>
 					</p>
 				</div>
-				
-				<?php 
-				session_start();
-				if (isset($_SESSION['username']))
-					include 'AdminucitavanjeNovosti.php'
-				else include 'ucitavanjeNovosti.php';
-				?>
+				<?php include 'ucitavanjeNovosti.php'?>
 		</div>
 		</div>
 	</div>

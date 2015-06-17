@@ -13,14 +13,14 @@ visibility:hidden;
 }
 body
 {
- background-image: url("../slike/rest3.jpg");
+ background-image: url("../slike/rest1.jpg");
  background-size: auto;
  background-repeat: no-repeat;
  margin:0;
 }
 
 h1 {
-    color: #F1DB12;
+    color: white;
     text-align: left;
 	font-weight:bold;
 	font-size:120px;
@@ -52,8 +52,8 @@ h1 img
 
 #meni
 {
- background-color:#B31E1E;
- height:35px;
+ background-color:#A60000;
+ height:60px;
  margin:0;
  padding:0 340px;
  clear:both;
@@ -65,14 +65,16 @@ h1 img
     width: 5.5em;
     text-decoration: none;
     color: white;
-    background-color:#B31E1E;
+    background-color:#A60000;
     padding: 0.5em 0.6em;
-    border-right: 1px solid white;
-	border-left: 1px solid white;
 	text-align:center;
+	margin-top:20px;
+	font-weight:bold;
+	font-size:16px;
+	font-family:helvetica;
 }
 #meni a:hover {
-    background-color: red;
+    background-color: #7D4039;
 }
 #meni ul 
 { 
@@ -84,32 +86,27 @@ h1 img
  float:left;
  position:relative;
  display:block;
- background:#B31E1E;
+ background:#A60000;
  color:white;
  }
  
  #meni li ul 
  { 
  display:none;
- background:#B31E1E;
  }
  
  #meni li ul li
  { 
  clear:both;
  border-style:none;
- background:#B31E1E;
+ background:#7D4039;
  width: 6.7em;
  height:20px;
- border-bottom: 1px solid white;
- border-top: 1px solid white;
- border-right: 1px solid white;
- border-left: 1px solid white;
  }
  
   #meni li ul li:hover
  { 
- background:red;
+ background:#7D4039;
  }
 
 #potpis
@@ -147,11 +144,12 @@ table.center
 {
  margin-left:80px; 
  margin-right:80px;
+ margin-top:20px;
 }
 
 table th
 {
- background-color:#F1DB12;
+ background-color:#A64D4D;
  text-align:center;
  font-size:30px;
 }
@@ -159,6 +157,16 @@ table td
 {
   background-color:white;
   text-align:center;
+}
+#tabela
+{
+ margin-left:60px;
+ margin-right:60px;
+ margin-bottom:25px;
+ border:1px solid white;
+ height:600px;
+ overflow-y: scroll;
+ overflow-x: hidden;
 }
 #tabela td
 {
@@ -266,13 +274,14 @@ table.kontaktForma td
 {
   width: 7em;  height: 2em;
 }
-#podnozje
+.podnozje
 {
+ background-color:#560000;
  color:white;
  margin:0;
- padding-top:20px;
  padding-left:20px;
  clear:both;
+ height:67px;
 }
 
 .lijevo{
@@ -356,7 +365,8 @@ h3
  color:white;
  font-family:monospace;
  font-size:20px;
- margin-left:110px;
+ float:right;
+ margin-right:180px;
  margin-top:60px;
 }
 
@@ -416,13 +426,16 @@ h4
 
 #novosti
 {
+float:right;
+ margin-right:40px;
+ margin-bottom:30px;
  border:1px solid white;
  clear:both;
  overflow-y: scroll;
  overflow-x: hidden;
  border-radius: 25px;
  width:390px;
- height:1000px;
+ height:600px;
 }
 
 .vijesti
@@ -430,16 +443,16 @@ h4
 	border:2px solid white;
 	height: 340px;
 	width: 300px;
-	margin-left: -10px;
-	margin-top: 10px;
+	margin-left: 30px;
+	margin-top: 30px;
 }
 .vijestiBezSlike
 {
 	border:2px solid white;
 	height: 200px;
 	width: 300px;
-	margin-left: -10px;
-	margin-top: 10px;
+	margin-left: 30px;
+	margin-top: 30px;
 	clear:both;
 }
 
@@ -470,6 +483,13 @@ h4
  width:250px;
  margin-left: 240px;
  
+}
+
+.vijesti img
+{
+ height:170px;
+ width:250px;
+ margin-left: 25px;
 }
 
 .opsirnijeTekst{
@@ -512,7 +532,7 @@ h4
 	clear:both;
 	border:1px solid white;
     border-radius: 25px;
-	height:400px;
+	height:100px;
 	width:700px;
 	margin-left:350px;
 }
@@ -529,4 +549,10 @@ h4
 	clear:both;
 	border:1px solid white;
 	height:350px;
+}
+
+#logout
+{
+ height:600px;
+ clear:both;
 }

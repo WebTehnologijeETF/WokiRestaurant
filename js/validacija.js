@@ -218,15 +218,6 @@ function prikaziPoruku(isValid, errorMsg, errorElement) {
    }
 }
 
-function crossProvjera()
-{
-	var range= document.getElementById("range");
-	var opcija= document.getElementById("opcija");
-	if(opcija.options[opcija.selectedIndex].text=="Kritika" || opcija.options[opcija.selectedIndex].text=="Sugestija" )
-		range.disabled=false;
-	else range.disabled=true;
-}
-
 //meni, podmeni
 
 var lastRef;

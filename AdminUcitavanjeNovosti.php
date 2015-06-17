@@ -165,7 +165,7 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 		{
           $proba=0;
             $slika=$vijest['slika'];
-		    
+		    print "<div id='novosti'>";
 			if($slika!="") $vijesti ='<div class="vijesti">';
 		    
 			else $vijesti ='<div class="vijestiBezSlike">';
@@ -185,7 +185,7 @@ $rezultat = $veza->query("select id, naziv, UNIX_TIMESTAMP(datum) vrijeme2, auto
 			    print "<input type='hidden' name='tekstHidd' value='".$vijest."'/></td>";
   			    print "<a href='AdminUcitavanjeNovosti.php'>Obriši vijest</a>";
 			    print "<a href='#'>Izmijeni vijest</a>";
-				print '</div>';
+				print '</div></div>';
      }
 }
 print '</div>';

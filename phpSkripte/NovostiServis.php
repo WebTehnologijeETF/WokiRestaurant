@@ -14,7 +14,10 @@ function rest_get($request, $data)
 	$proba=json_encode($rezultat->fetchAll());
 	$result = json_decode($proba,true);
 	
-	print "<div id='tijelo'>";
+	print "<div>
+			<h3>Obavijesti:</h3>
+			</div>
+			<div id='novosti'><div id='tijelo'>";
 	
 	$i=0;
 	foreach($result as $vijest)
@@ -40,7 +43,7 @@ function rest_get($request, $data)
 					print '<p class = "opsirnije">'.$link.'</p>';
 				print '</div>';
 	}
-	print "</div>";
+	print "</div></div>";
 }
 function rest_post($request, $data)
  {
